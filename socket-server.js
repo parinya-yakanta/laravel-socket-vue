@@ -54,8 +54,7 @@ io.on('connection', function (socket) {
 
 const options = {
     name: 'streamName',
-    // url: 'rtsp://admin:Admin123@49.231.31.24:554/Src/MediaInput/stream_1/ch_1',
-    url: 'rtsp://kanit.wjpy:T9boIKA0M2Sx5D72u4Uy1o0Lv03Sriv4@esintelligence.ddnsbycat.com:11922/stream2',
+    url: 'rtsp://username:password@ip:port/stream2',
     wsPort: 3333
   }
 
