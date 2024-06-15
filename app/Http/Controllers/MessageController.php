@@ -24,4 +24,9 @@ class MessageController extends Controller
     {
         return view('scanner');
     }
+
+    public function cctv()
+    {
+        return view('cctv');
+    }
 }

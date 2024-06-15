@@ -3,10 +3,11 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 const app = express();
 import cors from 'cors';
+import Stream from 'node-rtsp-stream-jsmpeg';
 
 const http = createServer(app);
 
-const allowedOrigins = ['http://localhost:8000', 'http://192.168.1.35:8000'];
+const allowedOrigins = ['http://localhost:8000', 'http://127.0.0.1:8000'];
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -27,7 +28,11 @@ const io = new Server(http, {
     },
 });
 
+let onlineUsers = 0;
+
 io.on('connection', function (socket) {
+    onlineUsers++;
+    io.emit('updateOnlineUsers', onlineUsers);
     console.log('Server socket connected ', socket.id)
 
     socket.on('chatMessage', function (msg) {
@@ -40,7 +45,24 @@ io.on('connection', function (socket) {
         io.emit('scanner', msg)
     })
 
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+        onlineUsers--;
+        io.emit('updateOnlineUsers', onlineUsers);
+    });
 });
+
+const options = {
+    name: 'streamName',
+    // url: 'rtsp://admin:Admin123@49.231.31.24:554/Src/MediaInput/stream_1/ch_1',
+    url: 'rtsp://kanit.wjpy:T9boIKA0M2Sx5D72u4Uy1o0Lv03Sriv4@esintelligence.ddnsbycat.com:11922/stream2',
+    wsPort: 3333
+  }
+
+  let stream;
+
+  stream = new Stream(options)
+  stream.start()
 
 var port = process.env.PORT || 6999;
 

@@ -19,3 +19,4 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/camera/scanners', [MessageController::class, 'scanner'])->name('camera.scanners');
+Route::get('/camera/cctv', [MessageController::class, 'cctv'])->name('camera.cctv');

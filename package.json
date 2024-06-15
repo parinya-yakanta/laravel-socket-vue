@@ -13,6 +13,8 @@
     },
     "dependencies": {
         "@vue/compiler-sfc": "^3.4.27",
+        "node-rtsp-stream": "^0.0.9",
+        "node-rtsp-stream-jsmpeg": "^0.0.2",
         "qrcode.vue": "^3.4.1",
         "socket.io": "^4.7.5",
         "socket.io-client": "^4.7.5",

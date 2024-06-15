@@ -12,6 +12,10 @@
 - npm i vue-barcode-reader --save
 - npm i --save qrcode.vue
 
+# LIB Stream CCTV
+- npm i node-rtsp-stream
+- npm i node-rtsp-stream-jsmpeg
+
 # RUN TEST
 - terminal 01 = npm run dev
 - terminal 02 = node socket-server.js

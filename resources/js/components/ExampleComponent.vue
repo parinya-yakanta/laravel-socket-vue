@@ -3,6 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
+                    <h1>Online Users: <span id="onlineUsersCount"></span></h1>
                     <div class="card-header">
                         Chat
                     </div>
@@ -21,6 +22,7 @@
                 </div>
                 <br />
                 <p>To Scanner or <a href="http://localhost:8000/camera/scanners"> Click </a> </p>
+                <p>To CCTV <a href="http://localhost:8000/camera/cctv"> Click </a> </p>
                 <qrcode-vue :value="state.value" :size="state.size" level="H" />
             </div>
         </div>
@@ -59,6 +61,10 @@ export default {
 
             socket.on('scanner', function (msg) {
                 alert(msg);
+            });
+
+            socket.on('updateOnlineUsers', (count) => {
+                document.getElementById('onlineUsersCount').innerText = count;
             });
         });
 
